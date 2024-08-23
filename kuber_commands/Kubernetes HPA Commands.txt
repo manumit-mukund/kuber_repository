@@ -1,0 +1,146 @@
+-- delete metrics server if not working ---
+kubectl delete service/metrics-server -n  kube-system
+kubectl delete deployment.apps/metrics-server  -n  kube-system
+kubectl delete apiservices.apiregistration.k8s.io v1beta1.metrics.k8s.io
+kubectl delete clusterroles.rbac.authorization.k8s.io system:aggregated-metrics-reader
+kubectl delete clusterroles.rbac.authorization.k8s.io system:metrics-server 
+kubectl delete clusterrolebinding metrics-server:system:auth-delegator
+kubectl delete clusterrolebinding system:metrics-server          
+kubectl delete rolebinding metrics-server-auth-reader -n kube-system 
+kubectl delete serviceaccount metrics-server -n kube-system
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+minikube addons enable metrics-server ## minikube addons disable metrics-server
+
+kubectl get deployment metrics-server -n kube-system
+
+kubectl -n kube-system get pods
+
+kubectl get pod,svc -n kube-system
+
+kubectl get deployment metrics-server -n kube-system
+
+kubectl get pods -w
+
+kubectl top nodes
+
+kubectl top pods / kubectl top po
+
+kubectl top pod -A
+
+docker build -t springforkuberhpaimage:1.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag springforkuberhpaimage:1.0 manumitmukund/mykuberrepository:springforkuberhpaimage_1_0
+
+docker push manumitmukund/mykuberrepository:springforkuberhpaimage_1_0
+
+kubectl create deployment springforkuberhpaimagedeployment --image=manumitmukund/mykuberrepository:springforkuberhpaimage_1_0
+
+kubectl set resources deployment springforkuberhpaimagedeployment --limits cpu=500m,memory=200Mi
+
+kubectl set resources deployment springforkuberhpaimagedeployment --requests cpu=200m,memory=100Mi --limits cpu=500m,memory=200Mi
+
+## from a site: kubectl set resources deployment hello-world-nginx --requests cpu=10m,memory=20Mi --limits cpu=80m,memory=100Mi
+
+kubectl expose deployment springforkuberhpaimagedeployment --type=ClusterIP --port=8080
+
+minikube service springforkuberhpaimagedeployment --url
+
+## kubectl delete deployment springforkuberhpaimagedeployment
+
+## kubectl delete service springforkuberhpaimagedeployment
+
+## kubectl delete pod springforkuberhpaimagedeployment-5f68cc8cd-l9ctw
+
+## docker rmi rmi springforkuberhpaimage:1.0
+
+## docker rmi springforkuberhpaimage:1.0 manumitmukund/mykuberrepository:springforkuberhpaimage_1_0
+
+kubectl autoscale deployment springforkuberhpaimagedeployment --cpu-percent=50 --min=1 --max=7
+
+kubectl get hpa springforkuberhpaimagedeployment --watch
+
+kubectl get hpa
+
+## kubectl delete hpa springforkuberhpaimagedeployment
+
+kubectl describe hpa springforkuberhpaimagedeployment
+
+kubectl autoscale deployment springforkuberhpaimagedeployment --cpu-percent=4 --min=1 --max=6
+
+kubectl apply -f vpa.yaml 
+
+kubectl get vpa
+
+kubectl get vpa --watch
+
+kubectl describe vpa stress-vpa
+
+##kubectl delete vpa stress-vpa
+
+#docker pull skandyla/wrk
+
+docker pull williamyeh/wrk
+
+kubectl exec -it infinite-calls-5675fd5dd5-cwh9k sh
+
+docker run --rm williamyeh/wrk -c 5 -t 5 -d 300s  http://http://127.0.0.1:65314/kuber/hpatest
+
+docker run --rm williamyeh/wrk -c 5 -t 5 -d 300s --timeout 2s http://127.0.0.1:64572/kuber/hpatest
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://127.0.0.1:59696/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://springforkuberhpaimagedeployment/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://127.0.0.1:61851/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://127.0.0.1:8080; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://http://127.0.0.1:65314/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://springforkuberhpaimagedeployment; done"
+
+
+--running--
+
+NAME                               TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+hello-node                         LoadBalancer   10.97.46.239   127.0.0.1     8080:30228/TCP   3d1h
+kubernetes                         ClusterIP      10.96.0.1      <none>        443/TCP          3d1h
+springforkuberhpaimagedeployment   ClusterIP      10.96.167.16   <none>        8080/TCP         52m
+
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://10.96.167.16:8080/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://10.105.238.90:8080/kuber/hpatest; done"
+
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://127.0.0.1:64917//kuber/hpatest; done"
+
+#official: it's working# kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
+
+## kubectl delete pod load-generator
+
+--running--
+
+#official--running #kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
+
+
+
+## -- officlial kubectl get hpa php-apache --watch
+
+kubectl top pods
+
+kubectl logs springforkuberhpaimagedeployment-5f68cc8cd-l9ctw
+
+
+
+
+
+
+
+
+
+
+
