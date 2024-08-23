@@ -1,0 +1,85 @@
+minikube addons enable ingress
+
+kubectl get pods -n ingress-nginx
+
+minikube addons enable ingress-dns
+
+minikube addons list
+
+Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+
+kubectl edit configmap coredns -n kube-system
+
+ test:53 {
+            errors
+            cache 30
+            forward . 192.168.99.169
+    }
+
+Replace 192.168.99.169 with your minikube ip.
+
+
+kubectl get pods -n ingress-nginx
+
+kubectl apply -f https://k8s.io/examples/service/networking/example-ingress.yaml / kubectl apply -f example-ingress.yaml
+
+kubectl get ing
+
+kubectl get ingress
+
+kubectl get pods -n ingress-nginx
+
+kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+
+kubectl get services ingress-nginx-controller --namespace=ingress-nginx
+
+Caution: kubectl delete all  --all -n ingress-nginx
+
+kubectl get services -n ingress-nginx
+
+kubectl get po,svc
+
+kubectl create deployment springforkuberingressimagedeployment1 --image=manumitmukund/mykuberrepository:springforkuberingressimage_1_0
+
+kubectl expose deployment springforkuberingressimagedeployment1 --type=NodePort --port=8080
+
+kubectl create deployment springforkuberingressimagedeployment2 --image=manumitmukund/mykuberrepository:springforkuberingressimage_2_0
+
+kubectl expose deployment springforkuberingressimagedeployment2 --type=NodePort --port=8080
+
+kubectl create deployment springforkuberingressimagedeploymentcluster1 --image=manumitmukund/mykuberrepository:springforkuberingressimage_1_0
+
+kubectl expose deployment springforkuberingressimagedeploymentcluster1 --type=ClusterIP --port=8080
+
+kubectl create deployment springforkuberingressimagedeploymentcluster2 --image=manumitmukund/mykuberrepository:springforkuberingressimage_2_0
+
+kubectl expose deployment springforkuberingressimagedeploymentcluster2 --type=ClusterIP --port=8080
+
+
+
+kubectl -n ingress-nginx get ingressclasses
+
+kubectl -n ingress-nginx annotate ingressclasses nginx ingressclass.kubernetes.io/is-default-class="true"
+
+#Load balancer:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/cloud/deploy.yaml
+
+#NodePort
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/baremetal/deploy.yaml
+
+#Validate the NGINX Ingress Controller
+kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+kubectl get services ingress-nginx-controller --namespace=ingress-nginx
+
+#to check metallb
+kubectl get namespace
+
+
+kubectl get svc ingress-nginx
+
+kubectl get svc -n ingress-nginx
+
+minikube start --vm=true -p ingress-cluster
+
+kubectl create ingress demo --class=nginx --rule www.jackwesleyroper.io/=demo:80
+
