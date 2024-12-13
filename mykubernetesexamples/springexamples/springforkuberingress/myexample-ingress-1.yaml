@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mykuber-ingress-spring
+  annotations:
+      kubernetes.i0/ingress.class: nginx
+      nginx.ingress.kubernetes.io/rewrite-target: /      
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: mykuber.ingress.com
+      http:
+        paths:
+          - path: /v1
+            pathType: Prefix
+            backend:
+              service:
+                name: springforkuberingressimagedeployment
+                port:
+                  number: 8080
+          - path: /v2
+            pathType: Prefix
+            backend:
+              service:
+                name: web2
+                port:
+                  number: 8080

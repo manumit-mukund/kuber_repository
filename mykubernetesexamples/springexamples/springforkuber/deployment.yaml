@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: manumitmukund/mykuberrepository
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manumitmukund/mykuberrepository
+  template:
+    metadata:
+      labels:
+        app: manumitmukund/mykuberrepository
+    spec:
+      containers:
+      - name: manumitmukund/mykuberrepository
+        image: manumitmukund/mykuberrepository
+        readinessProbe:
+          exec:
+            command:
+            - 'true'
+          periodSeconds: 300
+          initialDelaySeconds: 10
+          timeoutSeconds: 30

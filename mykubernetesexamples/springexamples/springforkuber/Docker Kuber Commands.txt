@@ -1,0 +1,18 @@
+cd C:\mykubernetesexamples\springexamples\springforkuber
+
+docker build -t springforkuberim:1.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag springforkuberim:1.0 manumitmukund/mykuberrepository:springforkuberim_1_0
+
+docker push manumitmukund/mykuberrepository:springforkuberim_1_0
+
+kubectl create deployment springforkuberdeployment --image=manumitmukund/mykuberrepository:springforkuberim_1_0 --port=8081
+
+kubectl expose deployment springforkuberdeployment --type=NodePort
+
+kubectl port-forward svc/springforkuberdeployment 8081:8081
+
+hot url: http://127.0.0.1:8081/kuber/hello
+
