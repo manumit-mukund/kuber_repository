@@ -1,0 +1,19 @@
+cd C:\mykubernetesexamples\springexamples\springkuberhelmdemo
+
+docker build -t spring-app:1.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag spring-app:1.0 manumitmukund/mykuberrepository:spring-app_1_0
+
+docker push manumitmukund/mykuberrepository:spring-app_1_0
+
+helm create spring-app-chart-1-0
+
+tree spring-app-chart-1-0
+
+helm install myapp-chart-1-0 spring-app-chart-1-0
+
+kubectl port-forward svc/myapp-chart-1-0-spring-app-chart-1-0 8081:8081
+
+
