@@ -1,4 +1,4 @@
-cd C:\mykubernetesexamples\springexamples\springforkuber
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuber
 
 docker build -t springforkuberim:1.0 .
 
@@ -14,5 +14,5 @@ kubectl expose deployment springforkuberdeployment --type=NodePort
 
 kubectl port-forward svc/springforkuberdeployment 8081:8081
 
-hot url: http://127.0.0.1:8081/kuber/hello
+hit url: http://127.0.0.1:8081/kuber/hello
 
