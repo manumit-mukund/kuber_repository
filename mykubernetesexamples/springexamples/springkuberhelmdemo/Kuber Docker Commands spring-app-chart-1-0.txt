@@ -16,4 +16,6 @@ helm install myapp-chart-1-0 spring-app-chart-1-0
 
 kubectl port-forward svc/myapp-chart-1-0-spring-app-chart-1-0 8081:8081
 
+hit the url: http://localhost:8081/kuber/hello
+
 

@@ -11,7 +11,7 @@ public class SpringkuberdemoController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String syHello() {
-        return "Hello World from Kubernetes 3.0!";
+        return "Hello World from Kubernetes 2.0!";
     }
 
 }

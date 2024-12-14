@@ -1,0 +1,23 @@
+cd C:\mygitrepositories\kuber_repository\mykubernetesexamples\springexamples\springkuberhelmdemo
+
+docker build -t spring-app:2.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag spring-app:2.0 manumitmukund/mykuberrepository:spring-app_2_0
+
+docker push manumitmukund/mykuberrepository:spring-app_2_0
+
+helm create spring-app-chart-2-0
+
+--Edit values.xml accordingly in spring-app-chart-2-0 
+
+helm install myapp-chart-2-0 spring-app-chart-2-0 
+
+if required: helm uninstall myapp-chart-2-0
+
+kubectl port-forward svc/myapp-chart-2-0-spring-app-chart-2-0 8082:8082
+
+http://localhost:8082/kuber/hello
+
+
