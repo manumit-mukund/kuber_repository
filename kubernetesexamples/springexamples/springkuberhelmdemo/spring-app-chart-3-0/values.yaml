@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository:  manumitmukund/mykuberrepository
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3.0"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 8080
+  port: 8083
 
 ingress:
   enabled: false
@@ -71,14 +71,14 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-# livenessProbe:
-#   httpGet:
-#     path: /
-#     port: http
-# readinessProbe:
-#   httpGet:
-#     path: /
-#     port: http
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
 
 autoscaling:
   enabled: false
