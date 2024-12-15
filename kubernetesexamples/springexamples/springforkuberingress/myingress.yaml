@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress  
+  name: myspringforkuberingressimingress  
 spec:
   ingressClassName: nginx
   rules:
-    - host: hello-world.example
+    - host: myspringforkuberingressim.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: web
+                name: springforkuberingressimdeployment1
                 port:
                   number: 8081
           - path: /v2
             pathType: Prefix
             backend:
               service:
-                name: web2
+                name: springforkuberingressimdeployment2
                 port:
-                  number: 8081
+                  number: 8082

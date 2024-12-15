@@ -1,0 +1,86 @@
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberingress
+
+docker build -t springforkuberingressim:1.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag springforkuberingressim:1.0 manumitmukund/mykuberrepository:springforkuberingressim_1_0
+
+docker push manumitmukund/mykuberrepository:springforkuberingressim_1_0
+
+kubectl create deployment springforkuberingressimdeployment1 --image=manumitmukund/mykuberrepository:springforkuberingressim_1_0
+
+kubectl expose deployment springforkuberingressimdeployment1 --type=NodePort --port=8081
+
+kubectl port-forward svc/springforkuberingressimdeployment1 8081:8081
+
+hit url: http://127.0.0.1:8081/kuber/hello
+
+
+docker build -t springforkuberingressim:2.0 .
+
+docker login -u manumitmukund -p Mkdmkd`123
+
+docker tag springforkuberingressim:2.0 manumitmukund/mykuberrepository:springforkuberingressim_2_0
+
+docker push manumitmukund/mykuberrepository:springforkuberingressim_2_0
+
+kubectl create deployment springforkuberingressimdeployment2 --image=manumitmukund/mykuberrepository:springforkuberingressim_2_0
+
+kubectl expose deployment springforkuberingressimdeployment2 --type=NodePort --port=8082
+
+kubectl port-forward svc/springforkuberingressimdeployment2 8082:8082
+
+hit url: http://127.0.0.1:8082/kuber/hello
+
+
+------------------------------------------settings for ingres-----------------------------------------------
+minikube addons enable ingress
+
+kubectl get pods -n ingress-nginx
+
+minikube addons enable ingress-dns
+
+minikube addons list
+
+Powershell: Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+
+kubectl edit configmap coredns -n kube-system
+
+Corefile: |
+    .test:53 {
+            errors
+            cache 30
+            forward . 192.168.49.2
+    }
+
+Replace 192.168.99.169 with your minikube ip.
+
+kubectl get pods -n ingress-nginx
+
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberingress
+
+kubectl apply -f myingress.yaml
+
+host entry: 127.0.0.1 myspringforkuberingressim.com
+
+hit url: http://myspringforkuberingressim.com:8081/kuber/hello | http://myspringforkuberingressim.com:8082/kuber/hello
+
+-- kubectl delete -f myingress.yaml
+
+kubectl get ing | kubectl get ingress
+
+kubectl get pods -n ingress-nginx
+
+kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+
+kubectl get services ingress-nginx-controller --namespace=ingress-nginx
+
+Caution: kubectl delete all  --all -n ingress-nginx
+
+kubectl get services -n ingress-nginx
+
+kubectl get po,svc
+
+
+
