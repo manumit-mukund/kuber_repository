@@ -21,4 +21,4 @@ spec:
               service:
                 name: springforkuberingressimdeployment2
                 port:
-                  number: 8082
+                  number: 8083

@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY ./target/springforkuberingress-0.0.1-SNAPSHOT.jar /app
 
-EXPOSE 8081
+EXPOSE 8083
 
 CMD ["java","-jar","springforkuberingress-0.0.1-SNAPSHOT.jar"]

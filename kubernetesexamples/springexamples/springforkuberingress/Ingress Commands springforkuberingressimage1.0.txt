@@ -1,3 +1,4 @@
+----------------------------------------------------------------service1---------------------------------------------------
 cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberingress
 
 docker build -t springforkuberingressim:1.0 .
@@ -12,10 +13,14 @@ kubectl create deployment springforkuberingressimdeployment1 --image=manumitmuku
 
 kubectl expose deployment springforkuberingressimdeployment1 --type=NodePort --port=8081
 
+[Note: The port number should be the same as in the Docker file and in the application.proppertes]
+
 kubectl port-forward svc/springforkuberingressimdeployment1 8081:8081
 
 hit url: http://127.0.0.1:8081/kuber/hello
 
+----------------------------------------------------------------service2---------------------------------------------------
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberingress
 
 docker build -t springforkuberingressim:2.0 .
 
@@ -27,7 +32,9 @@ docker push manumitmukund/mykuberrepository:springforkuberingressim_2_0
 
 kubectl create deployment springforkuberingressimdeployment2 --image=manumitmukund/mykuberrepository:springforkuberingressim_2_0
 
-kubectl expose deployment springforkuberingressimdeployment2 --type=NodePort --port=8082
+kubectl expose deployment springforkuberingressimdeployment2 --type=NodePort --port=8082 
+
+[Note: The port number should be the same as in the Docker file and in the application.proppertes]
 
 kubectl port-forward svc/springforkuberingressimdeployment2 8082:8082
 
