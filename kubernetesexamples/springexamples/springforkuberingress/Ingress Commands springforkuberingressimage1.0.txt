@@ -17,6 +17,8 @@ kubectl expose deployment springforkuberingressimdeployment1 --type=NodePort --p
 
 kubectl port-forward svc/springforkuberingressimdeployment1 8081:8081
 
+hit url (for the index page): http://127.0.0.1:8081
+
 hit url: http://127.0.0.1:8081/kuber/hello
 
 ----------------------------------------------------------------service2---------------------------------------------------
@@ -37,6 +39,8 @@ kubectl expose deployment springforkuberingressimdeployment2 --type=NodePort --p
 [Note: The port number should be the same as in the Docker file and in the application.proppertes]
 
 kubectl port-forward svc/springforkuberingressimdeployment2 8082:8082
+
+hit url (for the index page): http://127.0.0.1:8082
 
 hit url: http://127.0.0.1:8082/kuber/hello
 

@@ -12,7 +12,7 @@ public class SpringBootAppApplication {
 
 	@RequestMapping("/hello")
 	public String home() {
-		return "Hello Kubernetes for Ingress:2.0!";
+		return "Hello Kubernetes for Ingress: for v2!";
 	}
 
 	public static void main(String[] args) {
