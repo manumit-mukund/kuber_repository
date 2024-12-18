@@ -99,6 +99,8 @@ kubectl apply -f myingress.yaml
 
 host entry: 127.0.0.1 myspringforkuberingressim.com
 
+minikube tunnel
+
 hit url (for index pages): https://myspringforkuberingressim.com/v1 | https://myspringforkuberingressim.com/v1
 
 -- kubectl delete -f myingress.yaml
