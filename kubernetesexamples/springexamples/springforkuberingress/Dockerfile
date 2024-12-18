@@ -1,9 +1,7 @@
 FROM openjdk:17
 
-WORKDIR /app
+EXPOSE 8082
 
-COPY ./target/springforkuberingress-0.0.1-SNAPSHOT.jar /app
+ADD target/springforkuberingress-0.0.1-SNAPSHOT.jar springforkuberingress-0.0.1-SNAPSHOT.jar
 
-EXPOSE 8083
-
-CMD ["java","-jar","springforkuberingress-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT [ "java", "-jar", "springforkuberingress-0.0.1-SNAPSHOT.jar"]
