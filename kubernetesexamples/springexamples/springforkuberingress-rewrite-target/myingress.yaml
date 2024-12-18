@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myspringforkuberingressimingress
+  annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: myspringforkuberingressim.com
+      http:
+        paths:
+          - path: /v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: springforkuberingressimdeployment1
+                port:
+                  number: 8081
+          - path: /v2(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: springforkuberingressimdeployment2
+                port:
+                  number: 8082
