@@ -8,11 +8,11 @@ docker tag springforkuberim:1.0 manumitmukund/mykuberrepository:springforkuberim
 
 docker push manumitmukund/mykuberrepository:springforkuberim_1_0
 
-kubectl create deployment springforkuberdeployment --image=manumitmukund/mykuberrepository:springforkuberim_1_0 --port=8081
+kubectl create deployment springforkuberdeployment --image=manumitmukund/mykuberrepository:springforkuberim_1_0 --port=8083
 
 kubectl expose deployment springforkuberdeployment --type=NodePort
 
-kubectl port-forward svc/springforkuberdeployment 8081:8081
+kubectl port-forward svc/springforkuberdeployment 8083:8083
 
-hit url: http://127.0.0.1:8081/kuber/hello
+hit url: http://127.0.0.1:8083/kuber/hello
 
