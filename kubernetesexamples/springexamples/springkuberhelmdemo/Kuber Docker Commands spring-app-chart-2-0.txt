@@ -10,7 +10,19 @@ docker push manumitmukund/mykuberrepository:spring-helm-app_2_0
 
 helm create spring-helm-app-2-0-chart-2-0
 
---Edit values.xml accordingly in spring-helm-app-2-0-chart-2-0
+--Edit values.xml as shown below in spring-helm-app-2-0-chart-2-0
+
+image:
+  repository: manumitmukund/mykuberrepository
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "spring-helm-app_2_0"
+
+  service:
+  type: NodePort
+  port: 8082
+
+--Edit values.xml as shown below in spring-helm-app-2-0-chart-2-0
 
 helm install myhelmapp-chart-2-0 spring-helm-app-2-0-chart-2-0
 

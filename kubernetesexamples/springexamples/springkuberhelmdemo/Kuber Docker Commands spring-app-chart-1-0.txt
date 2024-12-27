@@ -10,7 +10,20 @@ docker push manumitmukund/mykuberrepository:spring-helm-app_1_0
 
 helm create spring-helm-app-1-0-chart-1-0
 
---Edit values.xml (e.g., port: 8081) accordingly in spring-helm-app_1_0-chart-1-0 
+--Edit values.xml as shown below in spring-helm-app_1_0-chart-1-0 
+
+image:
+  repository: manumitmukund/mykuberrepository
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "spring-helm-app_1_0"
+
+  service:
+  type: NodePort
+  port: 8081
+
+--Edit values.xml accordingly in spring-helm-app_1_0-chart-1-0 
+
 
 tree spring-helm-app-1-0-chart-1-0
 
