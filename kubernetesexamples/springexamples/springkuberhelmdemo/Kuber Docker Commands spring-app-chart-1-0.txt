@@ -1,20 +1,28 @@
-cd C:\mykubernetesexamples\springexamples\springkuberhelmdemo
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springkuberhelmdemo
 
-docker build -t spring-app:1.0 .
+docker build -t spring-helm-app:1.0 .
 
 docker login -u manumitmukund -p Mkdmkd`123
 
-docker tag spring-app:1.0 manumitmukund/mykuberrepository:spring-app_1_0
+docker tag spring-helm-app:1.0 manumitmukund/mykuberrepository:spring-helm-app_1_0
 
-docker push manumitmukund/mykuberrepository:spring-app_1_0
+docker push manumitmukund/mykuberrepository:spring-helm-app_1_0
 
-helm create spring-app-chart-1-0
+helm create spring-helm-app-1-0-chart-1-0
 
-tree spring-app-chart-1-0
+--Edit values.xml (e.g., port: 8084) accordingly in spring-helm-app_1_0-chart-1-0 
 
-helm install myapp-chart-1-0 spring-app-chart-1-0
+tree spring-helm-app-1-0-chart-1-0
 
-kubectl port-forward svc/myapp-chart-1-0-spring-app-chart-1-0 8081:8081
+helm install myhelmapp-chart-1-0 spring-helm-app-1-0-chart-1-0
+
+Verify the helm release: helm list -a
+
+if required: helm uninstall myhelmapp-chart-1-0
+
+kubectl port-forward svc/myhelmapp-chart-1-0-spring-helm-app-1-0-chart-1-0 8081:8081
+
+hit the url (for the index page): http://localhost:8081/
 
 hit the url: http://localhost:8081/kuber/hello
 
