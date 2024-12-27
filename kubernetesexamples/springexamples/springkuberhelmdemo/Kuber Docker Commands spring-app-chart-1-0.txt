@@ -10,7 +10,7 @@ docker push manumitmukund/mykuberrepository:spring-helm-app_1_0
 
 helm create spring-helm-app-1-0-chart-1-0
 
---Edit values.xml (e.g., port: 8084) accordingly in spring-helm-app_1_0-chart-1-0 
+--Edit values.xml (e.g., port: 8081) accordingly in spring-helm-app_1_0-chart-1-0 
 
 tree spring-helm-app-1-0-chart-1-0
 
