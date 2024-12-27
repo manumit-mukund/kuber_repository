@@ -1,14 +1,14 @@
-# Default values for spring-app-chart-1-0.
+# Default values for spring-helm-app-2-0-chart-2-0.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: manumitmukund/mykuberrepository
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "spring-helm-app_2_0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 7001
+  port: 8082
 
 ingress:
   enabled: false
