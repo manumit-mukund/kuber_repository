@@ -97,7 +97,7 @@ cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\sprin
 
 kubectl apply -f myingress.yaml
 
-host entry: 127.0.0.1 myspringforkuberingressim.com
+host entry (path-> c:\Windows\System32\Drivers\etc\hosts): 127.0.0.1 myspringforkuberingressim.com
 
 minikube tunnel
 
