@@ -12,7 +12,7 @@ public class SpringkuberdemoController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String syHello() {
-        return "Hello World from Kubernetes helm for spring-app-chart-2-0 on " +  new Date();
+        return "Hello World from Kubernetes helm for spring-app-chart-3-0 on " +  new Date();
     }
 
 }
