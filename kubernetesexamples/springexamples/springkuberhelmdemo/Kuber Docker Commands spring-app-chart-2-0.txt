@@ -1,4 +1,4 @@
-cd C:\mygitrepositories\kuber_repository\mykubernetesexamples\springexamples\springkuberhelmdemo
+cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springkuberhelmdemo
 
 docker build -t spring-helm-app:2.0 .
 

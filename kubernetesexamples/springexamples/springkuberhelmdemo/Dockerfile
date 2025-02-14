@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY ./target/springkuberhelmdemo-0.0.1-SNAPSHOT.jar /app
 
-EXPOSE 8081
+EXPOSE 8082
 
 CMD ["java","-jar","springkuberhelmdemo-0.0.1-SNAPSHOT.jar"]
