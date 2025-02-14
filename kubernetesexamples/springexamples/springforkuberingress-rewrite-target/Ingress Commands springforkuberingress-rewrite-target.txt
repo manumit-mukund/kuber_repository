@@ -44,6 +44,8 @@ hit url (for the index page): http://127.0.0.1:8082
 
 hit url: http://127.0.0.1:8082/kuber/hello
 
+[Note: If the above hits fail, try restarting te minikube tunnel]
+
 
 ------------------------------------------settings for ingres-----------------------------------------------
 minikube addons enable ingress
@@ -101,6 +103,8 @@ host entry: 127.0.0.1 myspringforkuberingressim.com
 
 minikube tunnel
 
-hit url (for index pages): https://myspringforkuberingressim.com/v1 | https://myspringforkuberingressim.com/v1
+hit url (for index pages): https://myspringforkuberingressim.com/v1 | https://myspringforkuberingressim.com/v2
+
+hit the urls (for service): https://myspringforkuberingressim.com/v1/kuber/hello | https://myspringforkuberingressim.com/v2/kuber/hello
 
 -- kubectl delete -f myingress.yaml
