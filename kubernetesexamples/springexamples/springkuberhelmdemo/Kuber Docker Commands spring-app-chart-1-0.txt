@@ -39,4 +39,4 @@ hit the url (for the index page): http://localhost:8081/
 
 hit the url: http://localhost:8081/kuber/hello
 
-
+Npte: If the above hits don't work, delete minikube and start it again, then follow the above commands from helm install.
