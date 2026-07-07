@@ -14,11 +14,17 @@ public class SpringforkuberApplication {
 
 	@GetMapping("/hello")
 	public String sayHello() {
-		return "Hello World for Kuber on " +   new Date();
+
+		return "Hello World for Kuber on " + new Date();
+
+		// Test url: http://localhost:9001/kuber/hello
+
 	}
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SpringforkuberApplication.class, args);
+
 	}
 
 }

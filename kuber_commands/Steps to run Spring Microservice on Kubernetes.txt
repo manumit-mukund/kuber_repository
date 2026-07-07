@@ -1,0 +1,37 @@
+Steps to run Spring Microservice on Kubernetes / Docker Windows 10 Pro (example given below):
+
+1. Start Desktop Docker (download it if not available on your machine, e.g, Docker version 26.1.4, build 5650f9b)
+
+2. Open Command Prompt (Run as administrator) and run the following commands
+
+3. minikube start --driver=docker (download minikube if not on your machine, eg, minikube v1.33.1 on Microsoft Windows 10 Pro 10.0.19045.6466 Build 19045.6466)
+
+4. minikube docker-env
+
+5. create a folder, eg, C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuber
+
+6. cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuber
+
+7. Creata a java file, eg, SpringforkuberApplication.java, in a package in the above folder
+
+8. Create a Dockerfile (without any extesion) in the above folder
+
+6. docker build -t springforkuberim:1.0 .
+
+7. Crea a personal docker hub repository on https://hub.docker.com/
+
+8. docker login -u manumitmukund -p Mkdmkd`123
+
+9. docker tag springforkuberim:1.0 manumitmukund/mykuberrepository:springforkuberim_1_0
+
+10. docker push manumitmukund/mykuberrepository:springforkuberim_1_0
+
+11. kubectl create deployment springforkuberdeployment --image=manumitmukund/mykuberrepository:springforkuberim_1_0 --port=9001
+
+12. kubectl expose deployment springforkuberdeployment --type=NodePort
+
+13. (After a few seconds) kubectl port-forward svc/springforkuberdeployment 9001:9001
+
+14. hit url: http://127.0.0.1:9001/kuber/hello
+
+
