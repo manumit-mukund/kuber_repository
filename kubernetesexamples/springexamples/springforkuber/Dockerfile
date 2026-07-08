@@ -1,6 +1,6 @@
 FROM eclipse-temurin:21-jdk
 
-EXPOSE 8083
+EXPOSE 9001
 
 ADD target/springforkuber-0.0.1-SNAPSHOT.jar springforkuber-0.0.1-SNAPSHOT.jar
 

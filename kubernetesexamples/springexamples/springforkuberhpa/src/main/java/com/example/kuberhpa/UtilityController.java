@@ -29,6 +29,8 @@ public class UtilityController {
     new CPUSpikerThread().start();
 
     return " Hello!->6 threads launched!";
+
+    //Test url: http://localhost:9001/kuber/hpatest
   }
 
 }
