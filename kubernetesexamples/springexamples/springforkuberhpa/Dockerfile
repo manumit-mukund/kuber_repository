@@ -1,6 +1,6 @@
-FROM openjdk:17
+FROM eclipse-temurin:21-jdk
 
-EXPOSE 8080
+EXPOSE 9001
 
 ADD target/kuberhpa-0.0.1-SNAPSHOT.jar kuberhpa-0.0.1-SNAPSHOT.jar
 

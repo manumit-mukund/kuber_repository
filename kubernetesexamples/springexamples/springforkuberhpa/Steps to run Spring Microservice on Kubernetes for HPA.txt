@@ -1,0 +1,55 @@
+Steps to run Spring Microservice on Kubernetes / Docker Windows 10 Pro (example given below) for HPA:
+
+1. Start Desktop Docker (download it if not available on your machine, e.g, Docker version 26.1.4, build 5650f9b)
+
+2. Open Command Prompt (Run as administrator) and run the following commands
+
+3. minikube start --driver=docker (download minikube if not on your machine, eg, minikube v1.33.1 on Microsoft Windows 10 Pro 10.0.19045.6466 Build 19045.6466)
+
+4. minikube docker-env
+
+5. minikube addons enable metrics-server
+
+6. Create a folder, eg, C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberhpa
+
+7. cd C:\mygitrepositories\kuber_repository\kubernetesexamples\springexamples\springforkuberhpa
+
+8. Creata a java file, eg, KuberhpaApplication.java, and KuberhpaController.java in a package in the above folder
+
+9. Create a pom.xml file in the above folder
+
+10. Run pom.xml to create kuberhpa-0.0.1-SNAPSHOT.jar in the target folder of the above folder
+
+11. Create a Dockerfile (without any extesion) in the above folder
+
+12. docker build -t springforkuberhpaim:1.0 .
+
+13. Crea a personal docker hub repository on https://hub.docker.com/
+
+14. docker login -u manumitmukund -p **** (Use your docker hub userid/pwd)
+
+15. docker tag springforkuberhpaim:1.0 manumitmukund/mykuberrepository:springforkuberhpaim_1_0 (mention your docker hub repo path, eg, manumitmukund/mykuberrepository)
+
+16. docker push manumitmukund/mykuberrepository:springforkuberhpaim_1_0 (mention your docker hub repo path, eg, manumitmukund/mykuberrepository)
+
+17. kubectl create deployment springforkuberhpadeployment --image=manumitmukund/mykuberrepository:springforkuberhpaim_1_0 --port=9001 (mention your docker hub repo path, eg, manumitmukund/mykuberrepository)
+
+18. kubectl set resources deployment springforkuberhpadeployment --limits cpu=500m,memory=200Mi
+
+19. kubectl set resources deployment springforkuberhpadeployment --requests cpu=200m,memory=100Mi --limits cpu=500m,memory=200Mi
+
+20. kubectl expose deployment springforkuberhpadeployment --type=ClusterIP --port=9001
+
+21. minikube service springforkuberhpadeployment --url
+
+22. Copy the above url, open up a browser and hit the url, eg, http://127.0.0.1:55164/kuber/hpatest 
+
+23. Open another Command Prompt (Run as administrator) and run the following commands
+
+24. kubectl autoscale deployment springforkuberhpadeployment --cpu-percent=50 --min=1 --max=7
+
+25. kubectl get hpa springforkuberhpadeployment --watch
+
+
+
+
